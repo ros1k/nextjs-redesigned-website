@@ -6,8 +6,8 @@ const Header = () => {
    return (
       <div className={style['header-wrapper']}>
          <header className={style.header}>
-            <h1>Hi<span>!</span> My name is Damian Rosa</h1>
-            <h2>and i am a frontend developer<span>.</span></h2>
+            <h1>Hi<span className="--green">!</span> My name is Damian Rosa</h1>
+            <h2>and i am a frontend developer<span className="--green">.</span></h2>
             <Link href="/">Check more</Link>
          </header>
       </div>
