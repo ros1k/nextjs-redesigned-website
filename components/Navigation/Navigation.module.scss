@@ -1,0 +1,18 @@
+.navigation{
+   background-color:transparent;
+   height: 80px;
+   width: 100%;
+   padding:25px 50px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.main-navigation{
+   color:white;
+}
+.main-navigation-list{
+   display:flex;
+   flex-direction: row;
+   justify-content: flex-end;
+   align-items: center;
+}

@@ -1,0 +1,38 @@
+.nav-item{
+   list-style-type: none;
+   display: inline-block;
+   margin-right: 45px;
+   &:nth-last-child(1){
+      margin-right: 0px;
+   }
+   a{
+  
+      color:White;
+      text-decoration: none;
+      font-size:20px;
+      font-weight: 400;
+      transition: 0.3s ease-in-out;
+      position: relative;
+         &:after {
+            content: '';
+            position: absolute;
+            bottom:-3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #FDD005;
+            transform: scaleX(0);
+            transform-origin: bottom left;
+    
+            transition: transform 0.3s;
+        }
+    
+        &:hover {
+            &:after {
+                transform: scaleX(1);
+            }
+        }
+         
+      
+   }
+}
