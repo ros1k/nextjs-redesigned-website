@@ -4,9 +4,10 @@ import style from './NavItem.module.scss'
 
 
 const NavItem = ({name,urlSlug}) => {
+ 
    return (
       <li className={style['nav-item']}>
-         <Link className={style['nav-item','link']} href={urlSlug}>{name}</Link>
+         <Link className={style['nav-item','link']} href={urlSlug?`${urlSlug}`:`/`}>{name}</Link>
       </li>
    )
 }
