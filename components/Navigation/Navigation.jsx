@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import style from './Navigation.module.scss'
 import NavItem from './NavItem/NavItem'
 import Link from 'next/link'
+import Image from 'next/image'
 
 
 const Navigation = ({navigationItems}) => {
@@ -12,8 +13,8 @@ const Navigation = ({navigationItems}) => {
             <div className="row">
                <div className="col-12">
                   <div className={style['main-navigation']}>
-                     <Link href="/">
-                        <img src="/Damian.svg" alt="logo"/>
+                     <Link href="/" scroll={true}>
+                        <a href="/"><Image src="/Damian.svg" alt="logo" width="113" height="53"/></a>
                      </Link>
                   
                      <ul className={style['main-navigation-list']}>

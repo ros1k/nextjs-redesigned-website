@@ -1,0 +1,14 @@
+.skill{
+   list-style-type: none;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items:center;
+   margin: 0 15px;
+   &__title{
+      font-size: 18px;
+      line-height: 120%;
+      text-transform: uppercase;
+      margin-top: 5px;
+   }
+}

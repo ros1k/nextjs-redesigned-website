@@ -1,0 +1,102 @@
+.section-about{
+   color:white;
+   margin: 0 auto;
+   position: relative;
+   padding-top:50px;
+   &:before{
+      content:"";
+      position: absolute;
+      width: 300px;
+      height: 100%;
+      top:0;
+      left:30px;
+      border:2px solid transparent;
+      border-left-color:rgba(72,72,72,25%);
+      border-right-color:rgba(72,72,72,25%);
+      z-index: 1;
+   }
+   &:after{
+      content:"";
+      position: absolute;
+      width: 300px;
+      height: 100%;
+      top:0;
+      right:30px;
+      border:2px solid transparent;
+      border-left-color:rgba(72,72,72,25%);
+      border-right-color:rgba(72,72,72,25%);
+      z-index: 1;
+   }
+   &__header{
+      padding:25px 0;
+      margin-bottom: 80px;
+     
+   }
+   
+   &__title{
+      color:white;
+      font-size: 26px;
+      line-height: 39px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 300;
+   }
+   &-content{
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+   
+      &:before{
+         content:"about";
+         position: absolute;
+         left:-180px;
+         top:-100px;
+         font-weight: 500;
+         font-size: 144px;
+         line-height: 213px;
+         letter-spacing: 0.145em;
+         color: rgba(49, 49, 49, 0.45);
+         z-index: -1;
+      }
+      &-left,&-middle,&-right{
+         width: 300px;
+         margin: 0 auto;
+         position: relative;
+         height: 100%;
+      }
+      &-middle{
+         h3{
+            text-align: center;
+          
+         }
+      }
+      &__title{
+         font-size:24px;
+         font-weight: bold;
+         height: 100px;
+      }
+      &__text{
+         font-size: 14px;
+         line-height: 21px;
+         letter-spacing: 0.145em;
+      }
+      &-list{
+         padding:0 15px;
+         display: flex;
+         justify-content: space-evenly;
+         flex-wrap: wrap;
+         align-items: center;
+      }
+      &-image-wrapper{
+         width: 100%;
+         position: relative;
+         padding-top:5px;
+         img{
+            width: 100%;
+         }
+      }
+   }
+}
