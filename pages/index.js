@@ -7,6 +7,7 @@ import Layout from 'components/Layout'
 import About from 'components/HomePage/About/About'
 import Background from 'components/HomePage/Background/Background'
 import Portfolio from 'components/HomePage/Portfolio/Portfolio';
+import Contact from 'components/HomePage/Contact/Contact';
 
 const Home = ({ navigationItems,portfolio, skills , images}) =>{
   
@@ -34,6 +35,14 @@ const Home = ({ navigationItems,portfolio, skills , images}) =>{
                   </div>
                 </div>
               </div>
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <Contact />
+               
+                </div>
+              </div>
+            </div>
           </main>
     </Layout>
     </>

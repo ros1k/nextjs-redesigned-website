@@ -5,7 +5,7 @@ import Skill from './Skill/Skill'
 
 
 const About = ({skills,images}) => {
-   console.log(images[0].obrazki[0].url);
+
    return (
       <div className={style['section-about']}>
          <div className={style['section-about__header']}>

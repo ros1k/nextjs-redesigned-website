@@ -1,0 +1,15 @@
+.contact-details{
+  
+
+   &-item{
+      
+      a{
+         color:white;
+         text-decoration: none;
+         transition: 0.3s ease;
+         &:hover{
+            color:#00C896;
+         }
+      }
+   }
+}
