@@ -6,8 +6,9 @@ import Header from 'components/HomePage/Header/Header';
 import Layout from 'components/Layout'
 import About from 'components/HomePage/About/About'
 import Background from 'components/HomePage/Background/Background'
+import Portfolio from 'components/HomePage/Portfolio/Portfolio';
 
-const Home = ({ navigationItems, skills , images}) =>{
+const Home = ({ navigationItems,portfolio, skills , images}) =>{
   
   return (
     <>
@@ -15,11 +16,22 @@ const Home = ({ navigationItems, skills , images}) =>{
     <Layout >
         
         {/* <Navigation navigationItems={navigationItems}/> */}
-          <main className="container">
-              <div className="row">
+          <main >
+            
+            <div className="container">
+            <div className="row">
                 <div className="col-12">
                   <Header />
                   <About skills={skills} images={images}/>
+               
+                </div>
+              </div>
+            </div>
+              <div className="container override-1400">
+                <div className="row">
+                  <div className="col-12">
+                    <Portfolio portfolio={portfolio}/>
+                  </div>
                 </div>
               </div>
           </main>
@@ -92,6 +104,31 @@ export async function getStaticProps() {
     
     `
   })
+  const portfolio = await client.query({
+    query: gql
+    `
+    query portfolio {
+      portfolios(locales: en) {
+        company
+        id
+        isPageOnline
+        otherDescription
+        website
+        website_type
+        project_description
+        pageImage {
+          url
+        }
+        imagePlaceholder {
+          url
+        }
+        linkDoKodu
+        createdWith
+      }
+    }
+    `
+  })
+  
   
 
 
@@ -99,7 +136,8 @@ export async function getStaticProps() {
     props: {
       navigationItems: nav.data,
       skills: mainDetails.data.infos[0].mySkills,
-      images: obrazki.data.projectPictures
+      images: obrazki.data.projectPictures,
+      portfolio: portfolio.data.portfolios
     }
   }
 }
