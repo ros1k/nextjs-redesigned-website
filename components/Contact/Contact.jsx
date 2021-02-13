@@ -9,7 +9,7 @@ import ContactForm from './ContactForm/ContactForm'
 const Contact = () => {
    const {images} = useContext(StoreContext)
    
-   console.log(images);
+
    return (
       <div className={style['section-contact']}>
          {/* <div className={style['section-contact-bg']}>
