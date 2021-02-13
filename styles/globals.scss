@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
+$darkGray: #1d1d1d;
+$gray:#484848;
+$lightGray: #f2ecff;
+$green: #00C896;
 
 
-html,
+
 body {
   padding: 0;
   margin: 0;
   font-family: 'Oswald', sans-serif;
   background-color: #1D1D1D;
   overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+  
 }
+
 
 a {
   color: inherit;
@@ -63,3 +71,4 @@ a {
   width: 50px!important;
   height: 30px!important;
 }
+
