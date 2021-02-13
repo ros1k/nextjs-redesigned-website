@@ -10,16 +10,16 @@ import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import Navigation from 'components/Navigation/Navigation'
 import LayoutMain from 'components/LayoutMain'
 import Layout from 'components/Layout'
-import PageHeader from 'components/PageHeader/PageHeader';
+import PageHeader from 'components/AboutPage/PageHeader/PageHeader';
 import Contact from 'components/Contact/Contact';
 
 
 
 
 
-const about = ({images,navigationItems,portfolio,skills,pageTitle}) =>{
+const portfolio = ({images,navigationItems,portfolio,skills,pageTitle}) =>{
   const {setImages, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
- 
+
 
   useEffect(() => {
     setImages(images)
@@ -33,7 +33,7 @@ const about = ({images,navigationItems,portfolio,skills,pageTitle}) =>{
        <Layout>
          <Navigation/>
           <LayoutMain>
-              <PageHeader title={pageTitle}/>
+              <PageHeader title={pageTitle} />
 
               <Contact/>
           </LayoutMain>
@@ -72,4 +72,4 @@ export async function getStaticProps() {
   }
 }
 
-export default about
+export default portfolio

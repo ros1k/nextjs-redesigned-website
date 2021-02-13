@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { useContext } from 'react'
-import { StoreContext } from 'store/StoreProvider'
+import { StoreContext } from 'components/Contact/node_modules/store/StoreProvider'
 import style from './About.module.scss'
 import Skill from './Skill/Skill'
 

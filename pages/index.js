@@ -7,8 +7,8 @@ import Layout from 'components/Layout'
 import About from 'components/HomePage/About/About'
 import Background from 'components/HomePage/Background/Background'
 import Portfolio from 'components/HomePage/Portfolio/Portfolio';
-import Contact from 'components/HomePage/Contact/Contact';
-import { StoreContext } from 'store/StoreProvider';
+import Contact from 'components/Contact/Contact';
+import { StoreContext } from 'components/Contact/node_modules/store/StoreProvider';
 import mainInfoQuerry from 'helpers/graphQLQuerry/info';
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
@@ -29,31 +29,27 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
     <>
     <Background />
     <Layout >
-        
          <Navigation /> 
           <main >
-            
             <div className="container">
             <div className="row">
                 <div className="col-12">
                   <Header />
-                  <About skills={skills} images={images}/>
-               
+                  <About />
                 </div>
               </div>
             </div>
               <div className="container override-1400">
                 <div className="row">
                   <div className="col-12">
-                    <Portfolio portfolio={portfolio}/>
+                    <Portfolio />
                   </div>
                 </div>
               </div>
             <div className="container">
               <div className="row">
                 <div className="col-12">
-                  <Contact images={images}/>
-               
+                  <Contact/>
                 </div>
               </div>
             </div>
