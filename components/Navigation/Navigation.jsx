@@ -1,12 +1,14 @@
-import React,{useEffect} from 'react'
+import React,{useContext} from 'react'
 import style from './Navigation.module.scss'
 import NavItem from './NavItem/NavItem'
 import Link from 'next/link'
 import Image from 'next/image'
+import { StoreContext } from 'store/StoreProvider'
 
 
-const Navigation = ({navigationItems}) => {
-
+const Navigation = () => {
+   const {navItems} = useContext(StoreContext)
+  
    return (
       <nav className={style.navigation}>
          <div className="container">
@@ -18,9 +20,9 @@ const Navigation = ({navigationItems}) => {
                      </Link>
                   
                      <ul className={style['main-navigation-list']}>
-                        {navigationItems.navigations.map((elem,key) => {
+                        {navItems? navItems.navigations.map((elem,key) => {
                            return (<NavItem key={elem.id} {...elem}/>)
-                        })}
+                        }): null}
                      </ul>
                   </div>
                

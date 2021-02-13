@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext,useEffect} from 'react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import Navigation from 'components/Navigation/Navigation'
 import Head from 'next/head'
@@ -8,15 +8,29 @@ import About from 'components/HomePage/About/About'
 import Background from 'components/HomePage/Background/Background'
 import Portfolio from 'components/HomePage/Portfolio/Portfolio';
 import Contact from 'components/HomePage/Contact/Contact';
+import { StoreContext } from 'store/StoreProvider';
+import mainInfoQuerry from 'helpers/graphQLQuerry/info';
+import navigationQuery from 'helpers/graphQLQuerry/nav';
+import picturesQuerry from 'helpers/graphQLQuerry/pictures';
+import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 
-const Home = ({ navigationItems,portfolio, skills , images}) =>{
+const Home = ({ navigationItems, portfolio, skills , images}) =>{
+  const {setImages, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
+
+
+  useEffect(() => {
+    setImages(images)
+    setNavItems(navigationItems)
+    setPortfolio(portfolio)
+    setSkills(skills)
+  }, [navigationItems,portfolio,skills,images])
   
   return (
     <>
     <Background />
     <Layout >
         
-        {/* <Navigation navigationItems={navigationItems}/> */}
+         <Navigation /> 
           <main >
             
             <div className="container">
@@ -38,7 +52,7 @@ const Home = ({ navigationItems,portfolio, skills , images}) =>{
             <div className="container">
               <div className="row">
                 <div className="col-12">
-                  <Contact />
+                  <Contact images={images}/>
                
                 </div>
               </div>
@@ -60,85 +74,16 @@ export async function getStaticProps() {
       authorization: process.env.GQL_AUTH
     }
   });
-  const  nav  = await client.query({
-    query: gql`
-      query MyQuery {
-        navigations(locales: en) {
-          id
-          name
-          locale
-          urlSlug
-          icon {
-            url
-          }
-        }
-      }
-    `
-  });
+  const nav  = await client.query({
+    query: gql`${navigationQuery}`});
   const mainDetails = await client.query({
-    query: gql`
-    query MyQuery {
-      infos(locales: en) {
-        id
-        address
-        imie_i_nazwisko
-        tekstDoAnimacji
-        telefon
-        email
-        cv {
-          url
-        }
-        mySkills {
-          skill
-          skillIcon {
-            url
-          }
-        }
-      }
-    }
-    
-    `
-  })
+    query: gql`${mainInfoQuerry}`})
   const obrazki = await client.query({
-    query: gql
-    `
-    query MyQuery {
-      projectPictures {
-        for
-        obrazki {
-          url
-        }
-      }
-    }
-    
-    `
-  })
+    query: gql`${picturesQuerry}`})
   const portfolio = await client.query({
-    query: gql
-    `
-    query portfolio {
-      portfolios(locales: en) {
-        company
-        id
-        isPageOnline
-        otherDescription
-        website
-        website_type
-        project_description
-        pageImage {
-          url
-        }
-        imagePlaceholder {
-          url
-        }
-        linkDoKodu
-        createdWith
-      }
-    }
-    `
-  })
-  
-  
+    query: gql`${portfolioQuerry}`})
+ 
+
 
 
   return {

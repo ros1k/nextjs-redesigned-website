@@ -1,10 +1,25 @@
 .section-contact{
-   padding:50px 0;
-
+   padding:100px 0;
+   z-index: 1;
+   overflow: hidden;
+   position: relative;
    &__header{
       padding:25px 0;
       margin-bottom: 80px;
-     
+     z-index: 1;
+      position: relative;
+      &:after{
+         content:"contact";
+         position: absolute;
+         right: 0px;
+         top: -83px;
+         font-weight: 500;
+         font-size: 144px;
+         line-height: 213px;
+         letter-spacing: 0.125em;
+         color: rgba(49, 49, 49, 0.45);
+         z-index: -1;
+      }
    }
    
    &__title{
@@ -18,6 +33,17 @@
    }
    &-content{
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
+      z-index: 1;
+   }
+   &-bg{
+      display:none;
+      position: absolute;
+      top:0px;
+      left:0;
+      z-index: 0;
+      width: 100%;
+      height: auto;
+      opacity:0.00;
    }
 }
