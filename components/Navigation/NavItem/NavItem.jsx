@@ -15,6 +15,7 @@ const NavItem = ({name,urlSlug,custom}) => {
        },
       }
     }
+    console.log(urlSlug);
    return (
       <motion.li 
          className={style['nav-item']} 

@@ -16,7 +16,7 @@ const SinglePortfolio = ({company,pageImage,imagePlaceholder,website,isPageOnlin
                   </h3>
                   <div className={style['single-portfolio-content-links']}>
                      {isPageOnline?<a href={website}>icona</a>:null}
-                     <Link href="/">
+                     <Link href={`/portfolio/${company}`}>
                         <a>icona</a>
                      </Link>
                   </div>

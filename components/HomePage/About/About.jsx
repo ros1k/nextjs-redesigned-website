@@ -23,16 +23,17 @@ const About = () => {
          <div className={style['box-line-left']}></div>
          <div className={style['box-line-right']}></div>
          <div className={style['section-about__header']}>
-            <FadeInWhenVisible>
+            <FadeInWhenVisible >
                <h2 className={style['section-about__title']}>about <span className="--green">me</span></h2>
             </FadeInWhenVisible>
          </div>
-         <div className={style['section-about-content']}>
-             <ParallaxWrapper customNumbers={[0.3, -0.1]}>
+         <ParallaxWrapper customNumbers={[0.3, -0.1]}>
                <div className={style['section-about-content__bg-text']}>
                      about
                </div>
                </ParallaxWrapper>
+         <div className={style['section-about-content']}>
+            
             <FadeInWhenVisible>
                <div className={style['section-about-content-left']}>
                   <h3 className={style['section-about-content__title']}>coding challanging projects<br/> is fun<span className="--green">.</span></h3>
@@ -80,7 +81,10 @@ function FadeInWhenVisible({ children }) {
        ref={ref}
        animate={controls}
        initial="hidden"
-       transition={{ duration: 0.8 }}
+       transition={{ 
+          duration: 0.7,
+          
+          }}
        variants={{
          visible: { opacity: 1, scale: 1 },
          hidden: { opacity: 0, scale: 0 }

@@ -3,6 +3,8 @@ import Link from 'next/link'
 import style from './Header.module.scss'
 import {motion} from 'framer-motion'
 const Header = () => {
+   
+
    return (
       <div className={style['header-wrapper']}>
          <header className={style.header}>

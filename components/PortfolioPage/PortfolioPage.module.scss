@@ -1,0 +1,11 @@
+.PortfolioPage{
+ margin: 0 -15px;
+ display: flex;
+ justify-content: center;
+ align-items: flex-start;
+ flex-wrap: wrap;
+   & > div{
+      
+      width: 25%;
+   }
+}

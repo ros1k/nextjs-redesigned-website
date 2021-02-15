@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import style from './Portfolio.module.scss'
-import SinglePortfolio from './SinglePortfolio/SinglePortfolio';
+import SinglePortfolio from 'components/SinglePortfolio/SinglePortfolio';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
