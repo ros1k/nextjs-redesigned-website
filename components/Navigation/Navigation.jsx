@@ -4,11 +4,12 @@ import NavItem from './NavItem/NavItem'
 import Link from 'next/link'
 import Image from 'next/image'
 import { StoreContext } from 'store/StoreProvider'
-
+import {motion} from 'framer-motion'
 
 const Navigation = () => {
    const {navItems} = useContext(StoreContext)
-  
+
+
    return (
       <nav className={style.navigation}>
          <div className="container">
@@ -16,12 +17,26 @@ const Navigation = () => {
                <div className="col-12">
                   <div className={style['main-navigation']}>
                      <Link href="/" scroll={true}>
-                        <a href="/"><Image src="/Damian.svg" alt="logo" width="113" height="53"/></a>
+                        <motion.a 
+                        initial={{
+                           x:-100,
+                           opacity:0,                     
+                        }}
+                        transition={{ ease: "easeOut", duration: 1.5 }}   
+                        animate={{
+                           opacity:1,
+                           x:0,
+                        }}
+                        href="/">
+                           <Image src="/Damian.svg" alt="logo" width="113" height="53"/>
+                        </motion.a>
                      </Link>
                   
-                     <ul className={style['main-navigation-list']}>
+                     <ul
+                        className={style['main-navigation-list']}>
                         {navItems? navItems.navigations.map((elem,key) => {
-                           return (<NavItem key={elem.id} {...elem}/>)
+                           return (<NavItem  key={elem.id} {...elem} custom={key}/>
+                             )
                         }): null}
                      </ul>
                   </div>

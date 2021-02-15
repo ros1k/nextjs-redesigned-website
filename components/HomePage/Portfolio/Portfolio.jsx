@@ -4,7 +4,7 @@ import SinglePortfolio from './SinglePortfolio/SinglePortfolio';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { StoreContext } from 'components/Contact/node_modules/store/StoreProvider';
+import { StoreContext } from 'store/StoreProvider';
 
 const Portfolio = () => {
   const {portfolio} = useContext(StoreContext)

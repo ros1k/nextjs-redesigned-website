@@ -8,14 +8,16 @@ import About from 'components/HomePage/About/About'
 import Background from 'components/HomePage/Background/Background'
 import Portfolio from 'components/HomePage/Portfolio/Portfolio';
 import Contact from 'components/Contact/Contact';
-import { StoreContext } from 'components/Contact/node_modules/store/StoreProvider';
+import { StoreContext } from 'store/StoreProvider';
 import mainInfoQuerry from 'helpers/graphQLQuerry/info';
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
+import { motion, useViewportScroll } from "framer-motion"
 
 const Home = ({ navigationItems, portfolio, skills , images}) =>{
   const {setImages, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
+  
 
 
   useEffect(() => {
@@ -23,14 +25,17 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
     setNavItems(navigationItems)
     setPortfolio(portfolio)
     setSkills(skills)
+    
   }, [navigationItems,portfolio,skills,images])
   
+
+
   return (
     <>
     <Background />
     <Layout >
          <Navigation /> 
-          <main >
+          <main  >
             <div className="container">
             <div className="row">
                 <div className="col-12">

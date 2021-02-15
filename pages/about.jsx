@@ -10,8 +10,9 @@ import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import Navigation from 'components/Navigation/Navigation'
 import LayoutMain from 'components/LayoutMain'
 import Layout from 'components/Layout'
-import PageHeader from 'components/PageHeader/PageHeader';
+
 import Contact from 'components/Contact/Contact';
+import PageHeader from 'components/PageHeader/PageHeader';
 
 
 

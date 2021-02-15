@@ -3,26 +3,27 @@
    margin: 0 auto;
    position: relative;
    padding: 120px 0;
-   z-index: 0;
-   &:before{
-      content:"";
+   z-index: 0; 
+   
+   .box-line-left{
+   
       position: absolute;
       width: 300px;
       height: 200%;
       top:0px;
-      left:35px;
+      left:0px;
       border:2px solid transparent;
       border-left-color:rgba(72,72,72,25%);
       border-right-color:rgba(72,72,72,25%);
       z-index: -1;
    }
-   &:after{
-      content:"";
+   .box-line-right{
+  
       position: absolute;
       width: 300px;
       height: 200%;
       top:0px;
-      right:35px;
+      right:0px;
       border:2px solid transparent;
       border-left-color:rgba(72,72,72,25%);
       border-right-color:rgba(72,72,72,25%);
@@ -53,9 +54,7 @@
       justify-content: space-between;
       align-items: flex-start;
       position: relative;
-   
-      &:before{
-         content:"about";
+      &__bg-text{
          position: absolute;
          left:-180px;
          top:-100px;
@@ -63,9 +62,21 @@
          font-size: 144px;
          line-height: 213px;
          letter-spacing: 0.145em;
-         color: rgba(49, 49, 49, 0.45);
+         color: #252525;
          z-index: -1;
       }
+      // &:before{
+      //    content:"about";
+      //    position: absolute;
+      //    left:-180px;
+      //    top:-100px;
+      //    font-weight: 500;
+      //    font-size: 144px;
+      //    line-height: 213px;
+      //    letter-spacing: 0.145em;
+      //    color: #252525;
+      //    z-index: -1;
+      // }
       &-left,&-middle,&-right{
          width: 300px;
          margin: 0 auto;

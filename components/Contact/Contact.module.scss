@@ -1,11 +1,9 @@
 .section-contact{
-   padding:100px 0;
-   z-index: 0;
-  
+   padding:100px 0;  
    position: relative;
-   z-index: -1;
-   &:before{
-      content:"";
+   z-index:1;
+   .box-line-left{
+    
       position: absolute;
       width: 300px;
       height: calc(100% + 50px);
@@ -16,8 +14,8 @@
       border-right-color:rgba(72,72,72,25%);
       z-index: -2;
    }
-   &:after{
-      content:"";
+   .box-line-right{
+ 
       position: absolute;
       width: 300px;
       height: calc(100% + 50px);
@@ -32,20 +30,31 @@
    &__header{
       padding:25px 0;
       margin-bottom: 80px;
-     z-index: 1;
+      z-index: 1;
       position: relative;
-      &:after{
-         content:"contact";
+      &__bg-text{
          position: absolute;
          right: 0px;
          top: -83px;
          font-weight: 500;
          font-size: 144px;
          line-height: 213px;
-         letter-spacing: 0.125em;
-         color: rgba(49, 49, 49, 0.45);
-         z-index: 0;
+         letter-spacing:  0.125em;
+         color: #252525;
+         z-index: -1;
       }
+      // &:after{
+      //    content:"contact";
+      //    position: absolute;
+      //    right: 0px;
+      //    top: -83px;
+      //    font-weight: 500;
+      //    font-size: 144px;
+      //    line-height: 213px;
+      //    letter-spacing: 0.125em;
+      //    color: #252525;
+      //    z-index: -1;
+      // }
    }
    
    &__title{
@@ -56,11 +65,13 @@
       text-transform: uppercase;
       text-align: center;
       font-weight: 300;
+      z-index: 1;
    }
    &-content{
       display: flex;
       justify-content: space-evenly;
       z-index: 1;
+     
    }
    &-bg{
       display:none;
