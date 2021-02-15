@@ -33,7 +33,14 @@ a {
 .--green{
   color:#00C896;
 }
+main{
+  //box-shadow: 0px 0px 15px 5px #181818;
+  position:relative;
+  z-index: 1;
+  &:after{
 
+  }
+}
 @media only screen and (min-width: 1200px) {
   .override-1400 {
     max-width: 1400px!important;

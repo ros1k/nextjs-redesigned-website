@@ -12,19 +12,48 @@ import classnames from "classnames";
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
+import SingleSection from 'components/PortfolioPage/SingleSection';
 
 const SinglePortfolioPage = ({ navigationItems, portfolio }) =>{
-   const { setNavItems} = useContext(StoreContext)
+   const { setNavItems } = useContext(StoreContext)
    const [currentPageData, setCurrentPageData]= useState()
-   
+   const [sectionTitles,setSectionTitles] = useState()
+   const [sectionDesc,setSectionDesc] = useState()
    const router = useRouter()
    const slug = router.query.slug || []
+   console.log();
+ 
+
+   const getTitlesAndDesc = () =>{
+      if(currentPageData){
+         const titles = []
+         const desc = []
+         currentPageData.projectDescription.map((elem,i)=>{
+            const tempArray =  elem.split('|')
+            titles[i] = tempArray[0]
+            desc[i] = tempArray[1]
+            
+
+            
+         })
+        
+         setSectionTitles(titles)
+         setSectionDesc(desc)
+         
+      }
+      
+      console.log(sectionTitles);
+      console.log(sectionDesc);
+   }
+
+
    useEffect(()=>{
       setNavItems(navigationItems)
       getProperPageData()
+      getTitlesAndDesc()
    },[navigationItems,currentPageData])
-   console.log(portfolio);
-   
+
+ 
    const getProperPageData = () =>{
       portfolio.map((element,i)=>{
         element.company.includes(slug) ? setCurrentPageData(portfolio[i]) : null
@@ -45,32 +74,11 @@ const SinglePortfolioPage = ({ navigationItems, portfolio }) =>{
                      isPageOnline={currentPageData.isPageOnline}
                      website={currentPageData.website}
                      />
-                     <section className={classnames(style.description,{
-                        [style.left]: true
-                     })}>
-                           <div className={style['description-content']}>
-                              <h2>project description is here #1</h2>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat augue et orci euismod hendrerit. 
-                                 Phasellus sollicitudin nisl commodo rutrum efficitur. Ut elementum tincidunt nibh, nec tristique odio interdum vel. 
-                                 Vestibulum nulla odio, tempor id tempus eu, mollis at diam. Pellentesque laoreet pulvinar lectus vel ornare. </p>
-                           </div>
-                           <div className={style['description-image']}>
-                              <img src={portfolio[1].portfolioDescriptionImage[0].url}alt=""/>
-                           </div>
-                     </section>
-                     <section className={classnames(style.description,{
-                        [style.right]: true
-                     })}>
-                           <div className={style['description-content']}>
-                              <h2>project description is here #1</h2>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat augue et orci euismod hendrerit. 
-                                 Phasellus sollicitudin nisl commodo rutrum efficitur. Ut elementum tincidunt nibh, nec tristique odio interdum vel. 
-                                 Vestibulum nulla odio, tempor id tempus eu, mollis at diam. Pellentesque laoreet pulvinar lectus vel ornare. </p>
-                           </div>
-                           <div className={style['description-image']}>
-                              <img src={portfolio[1].portfolioDescriptionImage[1].url} alt=""/>
-                           </div>
-                     </section>
+
+                     {currentPageData.portfolioDescriptionImage.map((e,i) => {
+                        return <SingleSection key={i} url={e.url} side={i%2===0} description={sectionDesc[i]} title={sectionTitles[i]}/>
+                     })}
+                     
             </Layout1140>
         
       </LayoutFluid>

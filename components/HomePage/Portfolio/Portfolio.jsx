@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { StoreContext } from 'store/StoreProvider';
+import FadeInWhenVisible from 'helpers/FramerMotion/FadeInWhenVisible';
 
 const Portfolio = () => {
   const {portfolio} = useContext(StoreContext)
@@ -22,7 +23,10 @@ const Portfolio = () => {
    return (
       <div className={style['section-portfolio']}>
          <div className={style['section-portfolio__header']}>
-            <h2 className={style['section-portfolio__title']}>my <span className="--green">projects</span></h2>
+           <FadeInWhenVisible delay={0.3}>
+              <h2 className={style['section-portfolio__title']}>my <span className="--green">projects</span></h2>
+           </FadeInWhenVisible>
+            
          </div>
          <div className={style['section-portfolio-content']}>
             <Slider {...settings}>

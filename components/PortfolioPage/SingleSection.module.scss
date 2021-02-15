@@ -11,7 +11,7 @@
       padding:35px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       flex-direction: column;
       z-index: 10;
       
@@ -19,7 +19,8 @@
       h2{
          font-size: 24px;
          line-height: 120%;     
-         text-transform: uppercase;    
+         text-transform: uppercase; 
+         text-align: left;   
       }
       p{
          font-size: 14px;
@@ -28,13 +29,16 @@
       }
    }
    &-image{
-      background-color: black;
+      background-color: transparent;
       width: 560px;
       height: 500px;
       z-index: 1;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       img{
-     
+         margin: 0 auto;
         height: 100%;
       }
    }
@@ -46,7 +50,7 @@
    flex-direction: row;
    .description-content{
       background-color: hsl(165, 100%, 29%);
-      margin-right: -100px;
+      margin-right: -70px;
    }
 }
 .right{
@@ -55,7 +59,7 @@
    align-items: center;
    flex-direction: row-reverse;
    .description-content{
-         margin-left: -100px;
+         margin-left: -70px;
          background-color: #0c0c0c;
       
    }
