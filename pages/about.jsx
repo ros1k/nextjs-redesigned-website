@@ -8,8 +8,8 @@ import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 
 
 import Navigation from 'components/Navigation/Navigation'
-import LayoutMain from 'components/LayoutMain'
-import Layout from 'components/Layout'
+import LayoutMain from 'components/Layout1140'
+import Layout from 'components/LayoutFluid'
 
 import Contact from 'components/Contact/Contact';
 import PageHeader from 'components/PageHeader/PageHeader';

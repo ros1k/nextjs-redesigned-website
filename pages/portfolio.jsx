@@ -8,33 +8,37 @@ import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 
 
 import Navigation from 'components/Navigation/Navigation'
-import LayoutMain from 'components/LayoutMain'
-import Layout from 'components/Layout'
+import LayoutMain from 'components/Layout1400'
+import Layout from 'components/LayoutFluid'
 import PageHeader from 'components/PageHeader/PageHeader';
 import Contact from 'components/Contact/Contact';
+import Background from 'components/Background/Background';
+import PortfolioPage from 'components/PortfolioPage/PortfolioPage';
 
 
 
 
 
-const portfolio = ({images,navigationItems,portfolio,skills,pageTitle}) =>{
-  const {setImages, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
+const portfolio = ({allImages,navigationItems,portfolio,skills,pageTitle}) =>{
+  const {setImages,images, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
 
 
   useEffect(() => {
-    setImages(images)
+    setImages(allImages)
     setNavItems(navigationItems)
     setPortfolio(portfolio)
     setSkills(skills)
   }, [navigationItems,portfolio,skills,images])
+
   
   return (
     
        <Layout>
+         <Background bgImage={images?images[2].obrazki[0].url:null}/>
          <Navigation/>
-          <LayoutMain>
-              <PageHeader title={pageTitle} />
-
+          <LayoutMain isStretched={true}>
+              <PageHeader title={pageTitle} backgroundImage={images?images[2].obrazki[0].url:null}/>
+              <PortfolioPage />
               <Contact/>
           </LayoutMain>
         </Layout>
@@ -60,13 +64,11 @@ export async function getStaticProps() {
     query: gql`${portfolioQuerry}`})
  
 
-
-
   return {
     props: {
       navigationItems: nav.data,
       skills: mainDetails.data.infos[0].mySkills,
-      images: obrazki.data.projectPictures,
+      allImages: obrazki.data.projectPictures,
       portfolio: portfolio.data.portfolios
     }
   }

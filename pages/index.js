@@ -3,9 +3,9 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import Navigation from 'components/Navigation/Navigation'
 import Head from 'next/head'
 import Header from 'components/HomePage/Header/Header';
-import Layout from 'components/Layout'
+import Layout from 'components/LayoutFluid'
 import About from 'components/HomePage/About/About'
-import Background from 'components/HomePage/Background/Background'
+import Background from 'components/Background/Background'
 import Portfolio from 'components/HomePage/Portfolio/Portfolio';
 import Contact from 'components/Contact/Contact';
 import { StoreContext } from 'store/StoreProvider';
@@ -14,6 +14,7 @@ import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import { motion, useViewportScroll } from "framer-motion"
+import LayoutFluid from 'components/LayoutFluid';
 
 const Home = ({ navigationItems, portfolio, skills , images}) =>{
   const {setImages, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
@@ -33,7 +34,7 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
   return (
     <>
     <Background />
-    <Layout >
+    <LayoutFluid >
          <Navigation /> 
           <main  >
             <div className="container">
@@ -59,7 +60,7 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
               </div>
             </div>
           </main>
-    </Layout>
+    </LayoutFluid>
     </>
    
    

@@ -1,15 +1,15 @@
 import React from 'react'
 
-const LayoutMain = ({children }) =>{
+const LayoutFluid = ({children }) =>{
   
   return (
-    <main className="main container">
+    <div className="container-fluid">
        <div className="row">
           <div className="col-12">
              {children}
           </div>
        </div>
-    </main>
+    </div>
   )
 }
-export default LayoutMain
+export default LayoutFluid
