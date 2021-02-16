@@ -6,12 +6,26 @@ import Image from 'next/image'
 import { StoreContext } from 'store/StoreProvider'
 import {motion} from 'framer-motion'
 
-const Navigation = () => {
+const Navigation = ({delay}) => {
    const {navItems} = useContext(StoreContext)
 
-
+ 
    return (
-      <nav className={style.navigation}>
+      <motion.nav 
+         initial={{
+            y:-100
+            
+         }}
+         animate={{
+            y:0,
+            transition:{
+               delay:1,
+               ease:'easeInOut'
+            }
+         }}
+         
+         exit={{y:-100}}
+         className={style.navigation}>
          <div className="container">
             <div className="row">
                <div className="col-12">
@@ -22,7 +36,7 @@ const Navigation = () => {
                            x:-100,
                            opacity:0,                     
                         }}
-                        transition={{ ease: "easeOut", duration: 1.5 }}   
+                        transition={{ ease: "easeOut", duration: 1.5,delay: delay?delay*0.25:0.6 }}   
                         animate={{
                            opacity:1,
                            x:0,
@@ -35,7 +49,7 @@ const Navigation = () => {
                      <ul
                         className={style['main-navigation-list']}>
                         {navItems? navItems.navigations.map((elem,key) => {
-                           return (<NavItem  key={elem.id} {...elem} custom={key}/>
+                           return (<NavItem  key={elem.id} {...elem} custom={key} setDelay={delay}/>
                              )
                         }): null}
                      </ul>
@@ -44,7 +58,7 @@ const Navigation = () => {
                </div>
             </div>
          </div>
-      </nav>
+      </motion.nav>
       
    )
 }
