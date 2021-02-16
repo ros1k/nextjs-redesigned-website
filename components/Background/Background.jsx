@@ -1,25 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext,useEffect,useState } from 'react'
 import style from './Background.module.scss'
 import {motion} from 'framer-motion'
 import { StoreContext } from 'store/StoreProvider'
 
 
-const Background = ({bgImage, isAnimated}) => {
+const Background = ({bgImage, isAnimated ,bgImagePh}) => {
    const {transition,positionX,positionY,animationElement} = useContext(StoreContext)
-   
+   const [isAnimationEnd, setIsAnimationEnd] = useState(false)
+   const [imageSrc,setImageSrc] = useState(bgImagePh)
    const currentTrans = { duration: 2, ease: [0.6, 0.01, -0.05, 0.9]}
-   const scaleAndFade = {
-      initial:{   
-         
-      },
-      animate:{
-   
-         transition:{
-            duration: 1,
-         }
+
+   useEffect(()=>{
+      if(isAnimationEnd){
+         console.log(isAnimationEnd);
+         setImageSrc(bgImage)
       }
+      
+   },[isAnimationEnd])
+   const handeEndAnimation = () =>{
+      setIsAnimationEnd(true)
+      console.log(isAnimationEnd);
+      console.log('ended');
    }
-   
 
    if(isAnimated){
       return (
@@ -38,11 +40,13 @@ const Background = ({bgImage, isAnimated}) => {
                         left:0,
                         width:'calc(100vw - 15px)',
                         height:700,
-                        position:'absolute'
+                        position:'absolute',
+                        transition:{
+                           duration:1,
+                           delay:0.2} 
                      }}
-                     transition={{
-                        duration:1,
-                        delay:0.2}} 
+                     
+                     changeBackground={isAnimationEnd} onAnimationComplete={handeEndAnimation}
                      className={style.background} >
                          <div className={style['background-image-wrapper']}>
                               <motion.div 
@@ -54,20 +58,21 @@ const Background = ({bgImage, isAnimated}) => {
                                  }}
                               className={style['background-shadow']}></motion.div>
                <motion.img 
-               initial={{
-                  width:700,
-                  height:'auto',
-                  x:-20
-               }}
-               transition={{
-                  duration:1,
-                  delay:0.2}}
-               animate={{
-                  width:'100vw',
-                  height:'auto',
-                  x:0,
-               }}
-               src={bgImage} 
+                  initial={{
+                     width:700,
+                     height:'auto',
+                     x:-20
+                  }}
+               
+                  animate={{
+                     width:'100vw',
+                     height:'auto',
+                     x:0,
+                     transition:{
+                        duration:1,
+                        delay:0.2}
+                     }}
+                  src={imageSrc} 
                // width="1400" 
                // height="730"
                />

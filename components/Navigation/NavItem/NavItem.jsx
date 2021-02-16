@@ -15,7 +15,7 @@ const NavItem = ({name,urlSlug,custom,setDelay}) => {
        },
       }
     }
- 
+    console.log(urlSlug);
 
    return (
       <motion.li 
@@ -29,7 +29,7 @@ const NavItem = ({name,urlSlug,custom,setDelay}) => {
              delay: setDelay?(custom+setDelay) * 0.25:custom * 0.25,
            },
           }}>
-         <Link className={style['nav-item','link']} href={urlSlug?`${urlSlug}`:`/`}>{name}</Link>
+         <Link className={style['nav-item','link']} href={urlSlug?`/${urlSlug}`:`/`}>{name}</Link>
       </motion.li>
    )
 }

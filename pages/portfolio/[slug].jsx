@@ -14,12 +14,14 @@ import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import SingleSection from 'components/PortfolioPage/SingleSection';
 import { motion } from 'framer-motion';
+import Contact from 'components/Contact/Contact';
 
 const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
    const {setNavItems ,setImages, transition} = useContext(StoreContext)
    const [currentPageData, setCurrentPageData]= useState()
    const [sectionTitles,setSectionTitles] = useState()
    const [sectionDesc,setSectionDesc] = useState()
+ 
    const router = useRouter()
    const slug = router.query.slug || []
    const currentTrans = { duration: 2, ease: [0.6, 0.01, -0.05, 0.9]}
@@ -44,10 +46,8 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
       getProperPageData()
       getTitlesAndDesc()
    },[navigationItems,currentPageData])
-   const changeExitValue = () =>{
-
-   }
- 
+  
+   console.log(currentPageData);
    const getProperPageData = () =>{
       portfolio.map((element,i)=>{
         element.company.includes(slug) ? setCurrentPageData(portfolio[i]) : null
@@ -62,7 +62,7 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
             {currentPageData && 
                <div  >
                <LayoutFluid>
-                  <Background bgImage={currentPageData.pageImage.url} isAnimated={true}/>
+                  <Background bgImage={currentPageData.pageImage.url} isAnimated={true} bgImagePh={currentPageData.imagePlaceholder.url}/>
                   <div> 
                      <Navigation delay={6}/>
                      <Layout1140>
@@ -72,11 +72,12 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
                               client={currentPageData.company}
                               isPageOnline={currentPageData.isPageOnline}
                               website={currentPageData.website}
+                              delay={2.6}
                               />
                               {currentPageData.portfolioDescriptionImage.map((e,i) => {
                                  return <SingleSection key={i} url={e.url} side={i%2===0} counter={i} description={sectionDesc?sectionDesc[i]:null} title={sectionTitles?sectionTitles[i]:null}/>
                               })} 
-                              
+                              <Contact/>
                      </Layout1140>
                   </div>
                </LayoutFluid>

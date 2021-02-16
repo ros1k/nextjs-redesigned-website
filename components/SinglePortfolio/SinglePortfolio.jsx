@@ -7,6 +7,7 @@ import { StoreContext } from 'store/StoreProvider'
 
 const SinglePortfolio = ({company,pageImage,imagePlaceholder,website,isPageOnline,counter}) => {
    const {images,setPositionY,setPositionX,setAnimationElement} = useContext(StoreContext)
+ 
    const itemRef = useRef()
    const containerRef = useRef()
 
@@ -22,9 +23,9 @@ const SinglePortfolio = ({company,pageImage,imagePlaceholder,website,isPageOnlin
                   width:containerRef.current.getBoundingClientRect().width,
                   height:containerRef.current.getBoundingClientRect().height,
                })
-         }
-      
+         }    
    }
+ 
    return (
          <motion.div 
          initial={{x:0,y:0}}
@@ -43,6 +44,7 @@ const SinglePortfolio = ({company,pageImage,imagePlaceholder,website,isPageOnlin
             left:0,
          }}   
          ref={containerRef}
+        
          className={style['single-portfolio']}>
              <div 
                   //transition={transition}
