@@ -31,7 +31,7 @@ const Portfolio = () => {
          <div className={style['section-portfolio-content']}>
             <Slider {...settings}>
                {portfolio?portfolio.map((values,key)=>{
-                     return <SinglePortfolio key={key} {...values}/>
+                     return <FadeInWhenVisible key={key} delay={key<4?`0.${key}`:0.1}><SinglePortfolio key={key} {...values}/></FadeInWhenVisible>
                }):null}
                </Slider>
          </div>
