@@ -14,6 +14,7 @@ import PageHeader from 'components/PageHeader/PageHeader';
 import Contact from 'components/Contact/Contact';
 import Background from 'components/Background/Background';
 import PortfolioPage from 'components/PortfolioPage/PortfolioPage';
+import { motion } from 'framer-motion';
 
 
 
@@ -32,7 +33,7 @@ const portfolio = ({allImages,navigationItems,portfolio,skills,pageTitle}) =>{
 
   
   return (
-    
+      <div exit={{opacity:0}} initial={{opacity:0}} transition={{duration:1}} animate={{opacity:1}}>
        <Layout>
          <Background bgImage={images?images[2].obrazki[0].url:null}/>
          <Navigation/>
@@ -42,6 +43,7 @@ const portfolio = ({allImages,navigationItems,portfolio,skills,pageTitle}) =>{
               <Contact/>
           </LayoutMain>
         </Layout>
+        </div>
   )
 }
 

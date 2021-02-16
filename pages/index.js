@@ -13,11 +13,11 @@ import mainInfoQuerry from 'helpers/graphQLQuerry/info';
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
-import { motion, useViewportScroll } from "framer-motion"
+import { motion } from "framer-motion"
 import LayoutFluid from 'components/LayoutFluid';
 
 const Home = ({ navigationItems, portfolio, skills , images}) =>{
-  const {setImages, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
+  const { setImages, setNavItems, setPortfolio ,setSkills,transition} = useContext(StoreContext)
   
 
 
@@ -30,38 +30,51 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
   }, [navigationItems,portfolio,skills,images])
   
 
-
   return (
-    <>
-    <Background />
-    <LayoutFluid >
-         <Navigation /> 
-          <main  >
-            <div className="container">
-            <div className="row">
-                <div className="col-12">
-                  <Header />
-                  <About />
-                </div>
-              </div>
-            </div>
-              <div className="container override-1400">
-                <div className="row">
+    <motion.div 
+      initial={{opacity:1}} 
+      animate={{opacity:1}}
+      transition={{
+      duration:0.5,
+      delay:0.2}} 
+      exit={{opacity:0}} 
+      > 
+      <Background />
+      <LayoutFluid >
+          <Navigation /> 
+            <motion.main  
+            initial={{opacity:1}} 
+            animate={{opacity:1}}
+            transition={{
+            duration:0.5,
+            delay:0.2}} 
+            exit={{opacity:0}} 
+            >
+              <div className="container">
+              <div className="row">
                   <div className="col-12">
-                    <Portfolio />
+                    <Header />
+                    <About />
                   </div>
                 </div>
               </div>
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <Contact/>
+                <div className="container override-1400">
+                  <div className="row">
+                    <div className="col-12">
+                      <Portfolio />
+                    </div>
+                  </div>
+                </div>
+              <div className="container">
+                <div className="row">
+                  <div className="col-12">
+                    <Contact/>
+                  </div>
                 </div>
               </div>
-            </div>
-          </main>
-    </LayoutFluid>
-    </>
+            </motion.main>
+      </LayoutFluid>
+    </motion.div>
    
    
   )

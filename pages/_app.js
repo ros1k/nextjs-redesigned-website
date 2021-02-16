@@ -3,7 +3,7 @@ import '../styles/globals.scss'
 import { useRouter } from 'next/router'
 import StoreProvider from 'store/StoreProvider'
 import { useState ,useEffect} from 'react';
-
+import { AnimatePresence } from 'framer-motion';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -29,9 +29,13 @@ function MyApp({ Component, pageProps }) {
     getPageTitle()
   }, [router.pathname])
   return (
-          <StoreProvider>
-            <Component {...pageProps} pageTitle={pageTitle}/>
-          </StoreProvider>
+    <StoreProvider>
+      <AnimatePresence  exitBeforeEnter>
+        
+          <Component {...pageProps} pageTitle={pageTitle}/>
+      
+      </AnimatePresence>
+    </StoreProvider>
         )
 }
 

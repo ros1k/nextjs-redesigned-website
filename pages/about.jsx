@@ -13,7 +13,7 @@ import Layout from 'components/LayoutFluid'
 
 import Contact from 'components/Contact/Contact';
 import PageHeader from 'components/PageHeader/PageHeader';
-
+import {motion} from 'framer-motion'
 
 
 
@@ -30,15 +30,17 @@ const about = ({images,navigationItems,portfolio,skills,pageTitle}) =>{
   }, [navigationItems,portfolio,skills,images])
   
   return (
-    
-       <Layout>
-         <Navigation/>
+      <div exit={{opacity:0}} initial={{opacity:0}} transition={{duration:1}} animate={{opacity:1}}>
+        <Layout>
+          <Navigation/>
           <LayoutMain>
               <PageHeader title={pageTitle}/>
 
               <Contact/>
           </LayoutMain>
         </Layout>
+      </div>
+      
   )
 }
 

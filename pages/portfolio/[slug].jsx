@@ -10,20 +10,19 @@ import PageHeader from 'components/PageHeader/PageHeader'
 import { StoreContext } from 'store/StoreProvider'
 import classnames from "classnames";
 import navigationQuery from 'helpers/graphQLQuerry/nav';
-
+import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import SingleSection from 'components/PortfolioPage/SingleSection';
+import { motion } from 'framer-motion';
 
-const SinglePortfolioPage = ({ navigationItems, portfolio }) =>{
-   const { setNavItems } = useContext(StoreContext)
+const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
+   const {setNavItems ,setImages, transition} = useContext(StoreContext)
    const [currentPageData, setCurrentPageData]= useState()
    const [sectionTitles,setSectionTitles] = useState()
    const [sectionDesc,setSectionDesc] = useState()
    const router = useRouter()
    const slug = router.query.slug || []
-   console.log();
- 
-
+   const currentTrans = { duration: 2, ease: [0.6, 0.01, -0.05, 0.9]}
    const getTitlesAndDesc = () =>{
       if(currentPageData){
          const titles = []
@@ -32,27 +31,22 @@ const SinglePortfolioPage = ({ navigationItems, portfolio }) =>{
             const tempArray =  elem.split('|')
             titles[i] = tempArray[0]
             desc[i] = tempArray[1]
-            
-
-            
          })
-        
          setSectionTitles(titles)
          setSectionDesc(desc)
-         
       }
-      
-      console.log(sectionTitles);
-      console.log(sectionDesc);
    }
 
 
    useEffect(()=>{
       setNavItems(navigationItems)
+      setImages(images)
       getProperPageData()
       getTitlesAndDesc()
    },[navigationItems,currentPageData])
+   const changeExitValue = () =>{
 
+   }
  
    const getProperPageData = () =>{
       portfolio.map((element,i)=>{
@@ -61,29 +55,34 @@ const SinglePortfolioPage = ({ navigationItems, portfolio }) =>{
      
    }
    return (
-      <>
-      {currentPageData && 
-      <LayoutFluid>
-         <Background bgImage={currentPageData.pageImage.url}/>
-         <Navigation/>
-            <Layout1140>
-               <PageHeader 
-                     title={currentPageData.website_type.split('_').join(' ')} 
-                     isSubPage={true}
-                     client={currentPageData.company}
-                     isPageOnline={currentPageData.isPageOnline}
-                     website={currentPageData.website}
-                     />
-
-                     {currentPageData.portfolioDescriptionImage.map((e,i) => {
-                        return <SingleSection key={i} url={e.url} side={i%2===0} description={sectionDesc[i]} title={sectionTitles[i]}/>
-                     })}
-                     
-            </Layout1140>
-        
-      </LayoutFluid>
-      }
-   </>
+          <motion.div 
+               initial='initial' 
+               animate='animate' 
+               exit={{opacity:0}}>
+            {currentPageData && 
+               <div  >
+               <LayoutFluid>
+                  <Background bgImage={currentPageData.pageImage.url} isAnimated={true}/>
+                  <div> 
+                     <Navigation delay={6}/>
+                     <Layout1140>
+                        <PageHeader 
+                              title={currentPageData.website_type.split('_').join(' ')} 
+                              isSubPage={true}
+                              client={currentPageData.company}
+                              isPageOnline={currentPageData.isPageOnline}
+                              website={currentPageData.website}
+                              />
+                              {currentPageData.portfolioDescriptionImage.map((e,i) => {
+                                 return <SingleSection key={i} url={e.url} side={i%2===0} counter={i} description={sectionDesc?sectionDesc[i]:null} title={sectionTitles?sectionTitles[i]:null}/>
+                              })} 
+                              
+                     </Layout1140>
+                  </div>
+               </LayoutFluid>
+            </div>
+            }
+       </motion.div>
    )
 }
 export async function getStaticPaths() {
@@ -127,14 +126,16 @@ export async function getStaticProps() {
      query: gql`${navigationQuery}`});
    const portfolio = await client.query({
      query: gql`${portfolioQuerry}`})
-  
+   const obrazki = await client.query({
+      query: gql`${picturesQuerry}`})
  
  
  
    return {
      props: {
        navigationItems: nav.data,
-       portfolio: portfolio.data.portfolios,      
+       portfolio: portfolio.data.portfolios,
+       images: obrazki.data.projectPictures,      
      }
    }
  }
