@@ -72,7 +72,7 @@ const Navigation = ({delay}) => {
                            x:0,
                         }}
                         href="/">
-                           <img src={images[4].obrazki[0].url} alt="logo" width="113" height="53"/>
+                           <img src={images?images[4].obrazki[0]:null} alt="logo" width="113" height="53"/>
                         </motion.a>
                      </Link>
                   
