@@ -6,7 +6,7 @@ import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import MobileNavigation from 'components/MobileNavigation/MobileNavigation'
-
+import ParticlesBackground from 'components/ParticlesBackground/ParticlesBackground'
 import Navigation from 'components/Navigation/Navigation'
 import LayoutMain from 'components/Layout1140'
 import Layout from 'components/LayoutFluid'
