@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import style from './NavItem.module.scss'
+import style from './MobileNavItem.module.scss'
 import {motion} from 'framer-motion'
 import { StoreContext } from 'store/StoreProvider'
 
-const NavItem = ({name,urlSlug,custom,setDelay}) => {
+const NavItem = ({name,urlSlug,custom,setDelay,icon}) => {
   
    
    const items = {
@@ -32,7 +32,7 @@ const NavItem = ({name,urlSlug,custom,setDelay}) => {
            },
           }}>
          <Link  className={style['nav-item','link']} href={urlSlug?`/${urlSlug}`:`/`} >
-            <a >{name} </a>
+            <a onClick={(e)=>handleClick(e)}><img src={icon.url}/> </a>
             </Link>
       </motion.li>
    )

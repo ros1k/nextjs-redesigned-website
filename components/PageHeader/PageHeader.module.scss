@@ -7,6 +7,13 @@
    position: relative;
    z-index: 1;
    padding-top:150px;
+   @media screen and (max-width:1200px){
+      height: 300px;
+   }
+   @media screen and (max-width:500px) {
+      height: 200px;
+      padding-top:60px;
+   }
    &__title{
       color:white;
       font-size:84px;
@@ -16,6 +23,9 @@
       z-index: 1;
       text-align: right;
       margin-right: -10px;
+      @media screen and (max-width:1200px){
+         font-size:50px
+      }
    }
    &__background{
       position: absolute;
@@ -25,6 +35,12 @@
       height: 600px;
       overflow: hidden;
       z-index: 1;
+      @media screen and (max-width:1200px){
+         height: 300px;
+      }
+      @media screen and (max-width:500px) {
+         height: 200px;
+      }
       &:before{
          content:"";
          top:0;

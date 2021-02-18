@@ -2,6 +2,9 @@
    padding:100px 0;  
    position: relative;
    z-index:1;
+   @media screen and (max-width:500px){
+      padding:60px 0;
+   }
    .box-line-left{
     
       position: absolute;
@@ -32,6 +35,9 @@
       margin-bottom: 80px;
       z-index: 1;
       position: relative;
+      @media screen and (max-width:767px) {
+         margin-bottom: 20px;
+      }
       &__bg-text{
          position: absolute;
          right: 0px;
@@ -40,9 +46,16 @@
          font-size: 144px;
          line-height: 213px;
          letter-spacing:  0.125em;
-         color: #252525;
+         color: #333333;
          z-index: -1;
+         
+         @media screen and (max-width:600px) {
+            font-size:80px;
+         }
       }
+      @media screen and (max-width:465px) {
+            font-size:80px;
+         }
       // &:after{
       //    content:"contact";
       //    position: absolute;
@@ -66,12 +79,22 @@
       text-align: center;
       font-weight: 300;
       z-index: 1;
+      @media screen and (max-width:465px){
+         font-size: 20px;
+         line-height: 29px;
+      }
    }
    &-content{
       display: flex;
       justify-content: space-evenly;
       z-index: 1;
-     
+     @media screen and (max-width:767px){
+        flex-direction: column;
+        
+        &>div{
+           margin-bottom: 10px;
+        }
+     }
    }
    &-bg{
       display:none;

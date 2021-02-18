@@ -5,6 +5,11 @@
    justify-content: center;
    align-items:center;
    margin: 0 15px;
+   height: 70px;
+   img{
+      min-height: 25px;
+      margin-bottom: 5px;
+   }
    &__title{
       font-size: 18px;
       line-height: 120%;

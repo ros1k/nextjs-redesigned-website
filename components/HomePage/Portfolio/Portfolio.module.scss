@@ -1,14 +1,16 @@
 .section-portfolio{
    padding:50px 0;
-   
+
    &__header{
       padding:25px 0;
       margin-bottom: 80px;
-     
+      @media screen and (max-width:991px){
+         margin-bottom: 30px;
+      }
    }
    
    &__title{
-      color:white;
+      color:#fff;
       font-size: 26px;
       line-height: 39px;
       letter-spacing: 0.3em;

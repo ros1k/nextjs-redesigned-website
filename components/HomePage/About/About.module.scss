@@ -4,7 +4,9 @@
    position: relative;
    padding: 120px 0;
    z-index: 0; 
-   
+   @media screen and (max-width:1179px){
+      padding:0px 0;
+   }
    .box-line-left{
    
       position: absolute;
@@ -62,9 +64,35 @@
          font-size: 144px;
          line-height: 213px;
          letter-spacing: 0.145em;
-         color: #252525;
+         color: #333333;
          z-index: -1;
+         @media screen and (max-width:1500px){
+            left:-70px;
+         }
+         @media screen and (max-width:991px){
+            font-size:80px;
+            left:-30px;
+         }
       }
+
+      @media screen and (max-width:1179px){
+         flex-wrap: wrap;
+         &>div:nth-child(1){
+            order: 2;
+         }
+         &>div:nth-child(2){
+            order: 3;
+            width: 100%;
+         }
+         &>div:nth-child(3){
+            order: 1;
+            flex-grow: 1;
+            max-height: 200px;
+            overflow: hidden;
+            margin-bottom:25px;
+         }
+      }
+
       // &:before{
       //    content:"about";
       //    position: absolute;
@@ -82,12 +110,28 @@
          margin: 0 auto;
          position: relative;
          height: 100%;
+         @media screen and (max-width:1179px){
+            width: auto;
+         }
+         
+      }
+      &-right{
+         @media screen and (max-width:1179px){
+            width: 100%;
+         }
       }
       &-middle{
          width:350px;
+         @media screen and (max-width:1179px){
+            width: 100%;
+         }
          h3{
             text-align: center;
-          
+            @media screen and (max-width:1179px){
+               text-align: left;
+               margin-top: 25px;
+               height: 60px;
+            }
          }
       }
       &__title{
@@ -106,6 +150,9 @@
          justify-content: space-evenly;
          flex-wrap: wrap;
          align-items: center;
+         @media screen and (max-width:1179px){
+            justify-content: flex-start;
+         }
       }
       &-image-wrapper{
          width: 100%;
@@ -113,6 +160,9 @@
          padding-top:5px;
          img{
             width: 100%;
+            @media screen and (max-width:1179px){
+               transform: translateY(-10%);
+            }
          }
       }
    }

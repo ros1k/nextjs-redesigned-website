@@ -3,6 +3,9 @@
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: flex-end;
+   @media screen and (max-width:991px){
+      flex-direction: column;
+   }
    p{
       margin-bottom: 0px;
       position: relative;
@@ -19,9 +22,24 @@
          text-align: right;
          padding-right:60px;
       }
+      @media screen and (max-width:991px){
+         width: 100%;
+         min-width: 400px;
+         p{
+            
+            padding-right:0px;
+         }
+      }
+      @media screen and (max-width:465px){
+         min-width: 250px;
+      }
+      
    }
    &-message{
       width: 50%;
+      @media screen and (max-width:991px){
+         width: 100%;
+      }
    }
    input{
       width: 300px;
@@ -38,6 +56,10 @@
       &:active,&:focus{
          border-color:#00C896;
          outline: none;
+      }
+      @media screen and (max-width:991px){
+         margin-bottom: 10px;
+         width: 100%;
       }
    }
    
@@ -60,6 +82,7 @@
          border-color:#00C896;
          outline: none;
       }
+     
    }
    &-send{
       

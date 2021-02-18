@@ -17,11 +17,33 @@ const Portfolio = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+      }
+    },
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      }
+    }
+  ]
   };
 
    return (
-      <div className={style['section-portfolio']}>
+      <div id="portfolio" className={style['section-portfolio']}>
          <div className={style['section-portfolio__header']}>
            <FadeInWhenVisible delay={0.3}>
               <h2 className={style['section-portfolio__title']}>my <span className="--green">projects</span></h2>

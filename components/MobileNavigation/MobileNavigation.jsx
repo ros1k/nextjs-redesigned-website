@@ -1,12 +1,12 @@
 import React,{useContext,useState, useRef,useEffect} from 'react'
-import style from './Navigation.module.scss'
-import NavItem from './NavItem/NavItem'
+import style from './MobileNavigation.module.scss'
+import MobileNavItem from './MobileNavItem/MobileNavItem'
 import Link from 'next/link'
 import Image from 'next/image'
 import { StoreContext } from 'store/StoreProvider'
 import {motion} from 'framer-motion'
 
-const Navigation = ({delay}) => {
+const MobileNavigation = ({delay}) => {
    const {navItems,isMobile} = useContext(StoreContext)
    const [isScrolling, setIsScrolling] = useState(false);
    const navigationRef = useRef()
@@ -44,7 +44,7 @@ const Navigation = ({delay}) => {
    return (
       <motion.nav 
          initial={{
-            y:-100
+            y:100
          }}
          animate={{
             y:0,
@@ -54,35 +54,19 @@ const Navigation = ({delay}) => {
             }
          }}
          
-         exit={{y:-100}}
-         className={style.navigation} ref={navigationRef}>
+         exit={{y:100}}
+         className={style['mobile-navigation']} ref={navigationRef}>
          <div className="container">
             <div className="row">
                <div className="col-12">
-                  <div className={style['main-navigation']}>
-                     <Link href="/" scroll={true}>
-                        <motion.a 
-                        initial={{
-                           x:-100,
-                           opacity:0,                     
-                        }}
-                        transition={{ ease: "easeOut", duration: 1.5,delay: delay?delay*0.25:0.6 }}   
-                        animate={{
-                           opacity:1,
-                           x:0,
-                        }}
-                        href="/">
-                           <Image src="/Damian.svg" alt="logo" width="113" height="53"/>
-                        </motion.a>
-                     </Link>
-                  
+                  <div className={style['mobile-main-navigation']}>               
                      <motion.ul
                         initial='initial'
                         animate={isMobile? 'mobileAnimate': 'desktopAnimate'}
                         variants={variants}
-                        className={style['main-navigation-list']}>
+                        className={style['mobile-main-navigation-list']}>
                         {navItems? navItems.navigations.map((elem,key) => {
-                           return (<NavItem  key={elem.id} {...elem} custom={key} setDelay={delay}/>
+                           return (<MobileNavItem  key={elem.id} {...elem} custom={key} setDelay={delay}/>
                              )
                         }): null}
                      </motion.ul>
@@ -100,4 +84,4 @@ const Navigation = ({delay}) => {
 
 
 
-export default Navigation
+export default MobileNavigation

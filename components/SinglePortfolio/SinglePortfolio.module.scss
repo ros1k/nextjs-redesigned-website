@@ -3,7 +3,18 @@
    height: 650px;
    position: relative;
    z-index: 1;
-   
+   @media screen and (max-width:600px){
+      max-width: 300px;
+      margin: 0 auto;
+   }
+   @media screen and (max-width:1180px){
+      min-width: 33%;
+      height: 600px;
+   }
+   @media screen and (max-width:991px){
+      min-width: 50%;
+      height: 500px;
+   }
    &-image-wrapper{
       height: 100%;
       overflow: hidden;
@@ -13,8 +24,10 @@
       width: 100%;
       z-index: -1;
       img{
-        
          width: 100%;
+         @media screen and (max-width:1180px){
+            height: 100%;
+         }
       }
    }
    &-content{
@@ -50,12 +63,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background-color: #00C896;
             padding:20px;    
             cursor: pointer; 
+            img{
+               height:30px;
+               width: 30px;
+            }
            
          }
       }
