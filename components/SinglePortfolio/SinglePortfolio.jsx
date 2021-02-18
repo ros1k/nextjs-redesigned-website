@@ -62,7 +62,7 @@ const SinglePortfolio = ({company,pageImage,imagePlaceholder,website,isPageOnlin
                         <motion.a whileHover={{scale:1.15}} onClick={handleClick}><img  src={images[3].obrazki[0].url} alt=""/></motion.a>
                      </Link>
                   </div>
-                  <span className={style['single-portfolio-content__category']}>motoryzacja</span>
+                  <span className={style['single-portfolio-content__category']}></span>
 
              </motion.div>
          </motion.div>

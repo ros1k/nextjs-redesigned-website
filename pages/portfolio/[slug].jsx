@@ -12,6 +12,7 @@ import classnames from "classnames";
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
+import socialMediaQuerry from 'helpers/graphQLQuerry/socialMedia';
 import SingleSection from 'components/PortfolioPage/SingleSection';
 import { motion } from 'framer-motion';
 import Contact from 'components/Contact/Contact';
@@ -19,8 +20,8 @@ import ParticlesBackground from 'components/ParticlesBackground/ParticlesBackgro
 import MobileNavigation from 'components/MobileNavigation/MobileNavigation'
 
 
-const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
-   const {setNavItems ,setImages, transition} = useContext(StoreContext)
+const SinglePortfolioPage = ({ navigationItems, portfolio,images,socialMedia }) =>{
+   const {setNavItems ,setImages, setSocialMedia,transition} = useContext(StoreContext)
    const [currentPageData, setCurrentPageData]= useState()
    const [sectionTitles,setSectionTitles] = useState()
    const [sectionDesc,setSectionDesc] = useState()
@@ -46,6 +47,7 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
    useEffect(()=>{
       setNavItems(navigationItems)
       setImages(images)
+      setSocialMedia(socialMedia)
       getProperPageData()
       getTitlesAndDesc()
    },[navigationItems,currentPageData])
@@ -143,14 +145,16 @@ export async function getStaticProps() {
      query: gql`${portfolioQuerry}`})
    const obrazki = await client.query({
       query: gql`${picturesQuerry}`})
- 
+      const socialMedia = await client.query({
+         query: gql`${socialMediaQuerry}`})
  
  
    return {
      props: {
        navigationItems: nav.data,
        portfolio: portfolio.data.portfolios,
-       images: obrazki.data.projectPictures,      
+       images: obrazki.data.projectPictures,  
+       socialMedia: socialMedia.data.socialMedias    
      }
    }
  }

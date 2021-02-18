@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './ContactForm.module.scss'
-
+import {motion} from 'framer-motion'
 const ContactForm = () => {
    return (
       <form className={style['contact-form']} name="contact" method="POST">
@@ -30,7 +30,12 @@ const ContactForm = () => {
          </div>
          <div className={style['contact-form-send']}>
             <p>
-               <button type="submit">Send</button>
+               <motion.button 
+                  whileHover={{
+                     y:-3,
+                     x:2
+                  }}
+                  type="submit">Send</motion.button>
             </p>
         </div>
         

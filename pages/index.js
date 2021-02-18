@@ -14,12 +14,14 @@ import mainInfoQuerry from 'helpers/graphQLQuerry/info';
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
+import socialMediaQuerry from 'helpers/graphQLQuerry/socialMedia';
 import { motion } from "framer-motion"
 import LayoutFluid from 'components/LayoutFluid';
 import ParticlesBackground from 'components/ParticlesBackground/ParticlesBackground';
+import Footer from 'components/Footer/Footer';
 
-const Home = ({ navigationItems, portfolio, skills , images, info}) =>{
-  const { setInfo,setImages, setNavItems, setPortfolio ,setSkills,transition} = useContext(StoreContext)
+const Home = ({ navigationItems, portfolio, skills , images, info, socialMedia}) =>{
+  const { setSocialMedia,setInfo,setImages, setNavItems, setPortfolio ,setSkills,transition} = useContext(StoreContext)
   
 
 
@@ -29,7 +31,7 @@ const Home = ({ navigationItems, portfolio, skills , images, info}) =>{
     setPortfolio(portfolio)
     setSkills(skills)
     setInfo(info)
-    
+    setSocialMedia(socialMedia)
   }, [navigationItems,portfolio,skills,images,info])
   
 
@@ -85,6 +87,7 @@ const Home = ({ navigationItems, portfolio, skills , images, info}) =>{
               </div>
               <MobileNavigation/>
             </motion.main>
+            <Footer/>
       </LayoutFluid>
     </motion.div>
    
@@ -109,8 +112,9 @@ export async function getStaticProps() {
     query: gql`${picturesQuerry}`})
   const portfolio = await client.query({
     query: gql`${portfolioQuerry}`})
- 
-
+    const socialMedia = await client.query({
+      query: gql`${socialMediaQuerry}`})
+     
 
 
   return {
@@ -119,7 +123,8 @@ export async function getStaticProps() {
       skills: mainDetails.data.infos[0].mySkills,
       info: mainDetails.data.infos,
       images: obrazki.data.projectPictures,
-      portfolio: portfolio.data.portfolios
+      portfolio: portfolio.data.portfolios,
+      socialMedia: socialMedia.data.socialMedias
     }
   }
 }

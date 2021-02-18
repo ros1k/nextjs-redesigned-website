@@ -9,12 +9,17 @@ const StoreProvider = ({ children }) =>{
   const [info,setInfo] = useState()
   const [portfolio,setPortfolio] = useState()
   const [skills,setSkills] = useState()
+  const [socialMedia,setSocialMedia] = useState()
   //const [transition,setTransition] = useState({duration:0.6,ease:[0.43, 0.13, 0.23, 0.96]})
   const [transition,setTransition] = useState({ duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9]})
   const [positionY,setPositionY] = useState(0)
   const [positionX,setPositionX] = useState(0)
   const [animationElement,setAnimationElement] = useState({})
   const [isMobile,setIsMobile] = useState(false)
+
+
+
+
   const getWindowDimensions = () => {
     const { innerWidth: width, innerHeight: height } = window;
     return {
@@ -55,7 +60,8 @@ const StoreProvider = ({ children }) =>{
         transition,
         positionY, setPositionY,
         positionX, setPositionX,
-        animationElement, setAnimationElement
+        animationElement, setAnimationElement,
+        socialMedia,setSocialMedia
       }}>
       {children}
     </StoreContext.Provider>

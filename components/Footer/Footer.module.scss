@@ -1,0 +1,19 @@
+.footer-list{
+
+   display:flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   &__item{
+      margin: 0 10px;
+      a{
+         img{
+            background-color: transparent;
+            border-radius: 50%;
+            border:1px solid transparent;
+            max-height: 40px;
+         }
+         
+      }
+   }
+}

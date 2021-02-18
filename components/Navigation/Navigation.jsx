@@ -7,7 +7,7 @@ import { StoreContext } from 'store/StoreProvider'
 import {motion} from 'framer-motion'
 
 const Navigation = ({delay}) => {
-   const {navItems,isMobile} = useContext(StoreContext)
+   const {navItems,isMobile,images} = useContext(StoreContext)
    const [isScrolling, setIsScrolling] = useState(false);
    const navigationRef = useRef()
    const handleScroll = () =>{
@@ -40,7 +40,7 @@ const Navigation = ({delay}) => {
     
     
    }
-   
+   console.log(images);
    return (
       <motion.nav 
          initial={{
@@ -72,7 +72,7 @@ const Navigation = ({delay}) => {
                            x:0,
                         }}
                         href="/">
-                           <Image src="/Damian.svg" alt="logo" width="113" height="53"/>
+                           <img src={images[4].obrazki[0].url} alt="logo" width="113" height="53"/>
                         </motion.a>
                      </Link>
                   
