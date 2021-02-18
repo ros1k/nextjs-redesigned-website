@@ -40,7 +40,7 @@ const Header = () => {
             >
                and i am a frontend developer<span className="--green">.</span>
             </motion.h2>
-            <motion.a
+            {/* <motion.a
              initial={{
                y:50,
                opacity:0,
@@ -54,8 +54,14 @@ const Header = () => {
                opacity:1
             }}
             
-            href="/">Check more</motion.a>
+            href="/">Check more</motion.a> */}
+           
+           
          </header>
+         <div className={style['check-more']}>
+            <div className={style['mouse']}></div>
+               <p className={style['scroll']}>Scroll down and check more</p>
+            </div>
       </div>
    )
 }
