@@ -5,7 +5,7 @@ import mainInfoQuerry from 'helpers/graphQLQuerry/info';
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
-
+import MobileNavigation from 'components/MobileNavigation/MobileNavigation'
 
 import Navigation from 'components/Navigation/Navigation'
 import LayoutMain from 'components/Layout1140'
@@ -31,12 +31,20 @@ const about = ({images,navigationItems,portfolio,skills,pageTitle}) =>{
   
   return (
       <div exit={{opacity:0}} initial={{opacity:0}} transition={{duration:1}} animate={{opacity:1}}>
+         <motion.div initial={{opacity:0, width:'100vw',height:'100vh'}} animate={{opacity:1,transition:{
+        duration:0.5
+      }}}
+      exit={{opacity:0}}
+      className={'particlesBG'}>
+        <ParticlesBackground/>
+      </motion.div>
         <Layout>
           <Navigation/>
           <LayoutMain>
               <PageHeader title={pageTitle}/>
 
               <Contact/>
+              <MobileNavigation/>
           </LayoutMain>
         </Layout>
       </div>

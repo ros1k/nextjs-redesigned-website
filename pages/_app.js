@@ -11,9 +11,6 @@ function MyApp({ Component, pageProps }) {
   
   const getPageTitle = () =>{
     switch (router.pathname) {
-      case '/about':
-        setPageTitle('about me')
-        break;
       case '/portfolio':
         setPageTitle('portfolio')
         break;

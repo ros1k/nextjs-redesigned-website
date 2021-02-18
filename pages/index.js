@@ -1,6 +1,7 @@
 import React,{useContext,useEffect} from 'react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import Navigation from 'components/Navigation/Navigation'
+import MobileNavigation from 'components/MobileNavigation/MobileNavigation'
 import Head from 'next/head'
 import Header from 'components/HomePage/Header/Header';
 import Layout from 'components/LayoutFluid'
@@ -15,9 +16,10 @@ import picturesQuerry from 'helpers/graphQLQuerry/pictures';
 import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import { motion } from "framer-motion"
 import LayoutFluid from 'components/LayoutFluid';
+import ParticlesBackground from 'components/ParticlesBackground/ParticlesBackground';
 
-const Home = ({ navigationItems, portfolio, skills , images}) =>{
-  const { setImages, setNavItems, setPortfolio ,setSkills,transition} = useContext(StoreContext)
+const Home = ({ navigationItems, portfolio, skills , images, info}) =>{
+  const { setInfo,setImages, setNavItems, setPortfolio ,setSkills,transition} = useContext(StoreContext)
   
 
 
@@ -26,8 +28,9 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
     setNavItems(navigationItems)
     setPortfolio(portfolio)
     setSkills(skills)
+    setInfo(info)
     
-  }, [navigationItems,portfolio,skills,images])
+  }, [navigationItems,portfolio,skills,images,info])
   
 
   return (
@@ -39,7 +42,15 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
       delay:0.2}} 
       exit={{opacity:0}} 
       > 
-      <Background />
+      <motion.div initial={{opacity:0, width:'100vw',height:'100vh'}} animate={{opacity:1,transition:{
+        duration:0.5
+      }}}
+      exit={{opacity:0}}
+      className={'particlesBG'}>
+        <ParticlesBackground/>
+      </motion.div>
+     
+      
       <LayoutFluid >
           <Navigation /> 
             <motion.main  
@@ -68,10 +79,11 @@ const Home = ({ navigationItems, portfolio, skills , images}) =>{
               <div className="container">
                 <div className="row">
                   <div className="col-12">
-                    <Contact/>
+                    <Contact customValues={[-0.03, -0.15]}/>
                   </div>
                 </div>
               </div>
+              <MobileNavigation/>
             </motion.main>
       </LayoutFluid>
     </motion.div>
@@ -105,6 +117,7 @@ export async function getStaticProps() {
     props: {
       navigationItems: nav.data,
       skills: mainDetails.data.infos[0].mySkills,
+      info: mainDetails.data.infos,
       images: obrazki.data.projectPictures,
       portfolio: portfolio.data.portfolios
     }

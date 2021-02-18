@@ -8,6 +8,7 @@ const mainInfoQuerry = `
        tekstDoAnimacji
        telefon
        email
+       description
        cv {
          url
        }

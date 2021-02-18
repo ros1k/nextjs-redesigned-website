@@ -15,6 +15,9 @@ import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
 import SingleSection from 'components/PortfolioPage/SingleSection';
 import { motion } from 'framer-motion';
 import Contact from 'components/Contact/Contact';
+import ParticlesBackground from 'components/ParticlesBackground/ParticlesBackground'
+import MobileNavigation from 'components/MobileNavigation/MobileNavigation'
+
 
 const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
    const {setNavItems ,setImages, transition} = useContext(StoreContext)
@@ -47,7 +50,7 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
       getTitlesAndDesc()
    },[navigationItems,currentPageData])
   
-   console.log(currentPageData);
+   
    const getProperPageData = () =>{
       portfolio.map((element,i)=>{
         element.company.includes(slug) ? setCurrentPageData(portfolio[i]) : null
@@ -56,12 +59,22 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
    }
    return (
           <motion.div 
-               initial='initial' 
-               animate='animate' 
+               transition={{
+                  duration:0.3,
+                  delay:0,
+               }}
                exit={{opacity:0}}>
             {currentPageData && 
                <div  >
+                    <motion.div initial={{opacity:0, width:'100vw',height:'100vh'}} animate={{opacity:1,transition:{
+                        duration:0.5
+                        }}}
+                        exit={{opacity:0}}
+                        className={'particlesBG'}>
+                        <ParticlesBackground/>
+                        </motion.div>
                <LayoutFluid>
+                  
                   <Background bgImage={currentPageData.pageImage.url} isAnimated={true} bgImagePh={currentPageData.imagePlaceholder.url}/>
                   <div> 
                      <Navigation delay={6}/>
@@ -74,10 +87,11 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images }) =>{
                               website={currentPageData.website}
                               delay={2.6}
                               />
-                              {currentPageData.portfolioDescriptionImage.map((e,i) => {
+                              {/* {currentPageData.portfolioDescriptionImage.map((e,i) => {
                                  return <SingleSection key={i} url={e.url} side={i%2===0} counter={i} description={sectionDesc?sectionDesc[i]:null} title={sectionTitles?sectionTitles[i]:null}/>
-                              })} 
+                              })}  */}
                               <Contact/>
+                              <MobileNavigation/>
                      </Layout1140>
                   </div>
                </LayoutFluid>

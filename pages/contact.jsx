@@ -1,11 +1,11 @@
 import React,{useContext,useEffect} from 'react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { StoreContext } from 'store/StoreProvider';
-import mainInfoQuerry from 'helpers/graphQLQuerry/info';
+import MobileNavigation from 'components/MobileNavigation/MobileNavigation'
 import navigationQuery from 'helpers/graphQLQuerry/nav';
 import picturesQuerry from 'helpers/graphQLQuerry/pictures';
-import portfolioQuerry from 'helpers/graphQLQuerry/portfolio';
-import MobileNavigation from 'components/MobileNavigation/MobileNavigation'
+
+
 
 import Navigation from 'components/Navigation/Navigation'
 import LayoutMain from 'components/Layout1400'
@@ -20,16 +20,16 @@ import ParticlesBackground from 'components/ParticlesBackground/ParticlesBackgro
 
 
 
-const portfolio = ({allImages,navigationItems,portfolio,skills,pageTitle}) =>{
-  const {setImages,images, setNavItems, setPortfolio ,setSkills} = useContext(StoreContext)
+const portfolio = ({allImages,navigationItems,pageTitle}) =>{
+  const {setImages,images, setNavItems} = useContext(StoreContext)
 
 
   useEffect(() => {
     setImages(allImages)
     setNavItems(navigationItems)
-    setPortfolio(portfolio)
-    setSkills(skills)
-  }, [navigationItems,portfolio,skills,images])
+ 
+
+  }, [navigationItems,images])
 
   
   return (
@@ -46,12 +46,10 @@ const portfolio = ({allImages,navigationItems,portfolio,skills,pageTitle}) =>{
          <Navigation/>
           <LayoutMain isStretched={true}>
               <PageHeader title={pageTitle} delay={0.7} backgroundImage={images?images[2].obrazki[0].url:null}/>
-              <PortfolioPage />
               <Contact/>
-              
+              <MobileNavigation/>
           </LayoutMain>
         </Layout>
-        <MobileNavigation/>
         </div>
   )
 }
@@ -67,20 +65,14 @@ export async function getStaticProps() {
   });
   const nav  = await client.query({
     query: gql`${navigationQuery}`});
-  const mainDetails = await client.query({
-    query: gql`${mainInfoQuerry}`})
   const obrazki = await client.query({
     query: gql`${picturesQuerry}`})
-  const portfolio = await client.query({
-    query: gql`${portfolioQuerry}`})
  
 
   return {
     props: {
       navigationItems: nav.data,
-      skills: mainDetails.data.infos[0].mySkills,
       allImages: obrazki.data.projectPictures,
-      portfolio: portfolio.data.portfolios
     }
   }
 }
