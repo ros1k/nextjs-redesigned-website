@@ -59,7 +59,7 @@ const SinglePortfolio = ({company,pageImage,imagePlaceholder,website,isPageOnlin
                   <div exit={{opacity:0}} transition={transition} initial={{opacity:0}} animate={{opacity:1}} 
                   className={style['single-portfolio-content-links']}>
                      <Link href={`/portfolio/${company}`} >
-                        <a onClick={handleClick}><img src={images[3].obrazki[0].url} alt=""/></a>
+                        <motion.a whileHover={{scale:1.15}} onClick={handleClick}><img  src={images[3].obrazki[0].url} alt=""/></motion.a>
                      </Link>
                   </div>
                   <span className={style['single-portfolio-content__category']}>motoryzacja</span>

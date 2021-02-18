@@ -10,18 +10,18 @@ import ParallaxWrapper from 'helpers/FramerMotion/ParallaxWrapper'
 
 
 const About = () => {
-   const {skills,images} = useContext(StoreContext);
+   const {skills,images, info} = useContext(StoreContext);
    const y = useMotionValue(0)
    const textY = useTransform(y, value => value / 3);
   
 
    const { scrollYProgress } = useViewportScroll()
 
-
+ 
    return (
-      <div className={style['section-about']}>
-         <div className={style['box-line-left']}></div>
-         <div className={style['box-line-right']}></div>
+      <div id="about" className={style['section-about']}>
+         {/* <div className={style['box-line-left']}></div>
+         <div className={style['box-line-right']}></div> */}
          <div className={style['section-about__header']}>
             <FadeInWhenVisible delay={0.1} >
                <h2 className={style['section-about__title']}>about <span className="--green">me</span></h2>
@@ -38,8 +38,8 @@ const About = () => {
                <div className={style['section-about-content-left']}>
                   <h3 className={style['section-about-content__title']}>coding challanging projects<br/> is fun<span className="--green">.</span></h3>
                   <p className={style['section-about-content__text']}>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat augue et orci euismod hendrerit. Phasellus sollicitudin nisl commodo rutrum efficitur. Ut elementum tincidunt nibh, nec tristique odio interdum vel. Vestibulum nulla odio, tempor id tempus eu, mollis at diam. Pellentesque laoreet pulvinar lectus vel ornare.
-                     </p>
+                     {info && info[0].description}
+                  </p>
                </div>
             </FadeInWhenVisible>
             <FadeInWhenVisible delay={0.7}>
@@ -47,7 +47,7 @@ const About = () => {
                <h3 className={style['section-about-content__title']}>i worked with<span className="--green">:</span></h3>
                <ul className={style['section-about-content-list']}>
                   {skills? skills.map((values,key)=> {
-                     return <Skill key={key} {...values}/>
+                     return <Skill key={key} customValue={key} {...values}/>
                   }): null }
                </ul>
             </div>

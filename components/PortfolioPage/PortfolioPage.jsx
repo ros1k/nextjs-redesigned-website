@@ -10,11 +10,14 @@ const PortfolioPage = () => {
    const{portfolio} = useContext(StoreContext)
   
    return (
+      <>
       <div className={style.PortfolioPage}>
           {portfolio?portfolio.map((values,key)=>{
                      return <SinglePortfolio key={key} {...values}/>
                }):null}
       </div>
+      
+      </>
    )
 }
 

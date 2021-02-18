@@ -12,22 +12,22 @@ const Background = ({bgImage, isAnimated ,bgImagePh}) => {
 
    useEffect(()=>{
       if(isAnimationEnd){
-         console.log(isAnimationEnd);
+       
          setImageSrc(bgImage)
       }
       
    },[isAnimationEnd])
    const handeEndAnimation = () =>{
       setIsAnimationEnd(true)
-      console.log(isAnimationEnd);
-      console.log('ended');
+
+
    }
 
    if(isAnimated){
       return (
          <motion.div
                      initial={{
-                        x:positionX+125,
+                        x:positionX,
                         y:positionY,
                         width:animationElement.width,
                         height:animationElement.height,
@@ -38,7 +38,7 @@ const Background = ({bgImage, isAnimated ,bgImagePh}) => {
                         y:0,
                         top:0,
                         left:0,
-                        width:'calc(100vw - 15px)',
+                        width:'100vw',
                         height:700,
                         position:'absolute',
                         transition:{
@@ -73,8 +73,6 @@ const Background = ({bgImage, isAnimated ,bgImagePh}) => {
                         delay:0.2}
                      }}
                   src={imageSrc} 
-               // width="1400" 
-               // height="730"
                />
             </div>
          </motion.div>
@@ -86,8 +84,7 @@ const Background = ({bgImage, isAnimated ,bgImagePh}) => {
                animate={{opacity:1,position:'absolute',top:0,left:0}}
                transition={{duration:0.6}}
                exit={{opacity:0}}
-         
-         className={style.background} >
+            className={style.background} >
                   <div className={style['background-image-wrapper']}>
                   <div className={style['background-shadow']}></div>
                <img 
