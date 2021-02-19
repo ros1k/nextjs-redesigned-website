@@ -16,6 +16,7 @@ import Background from 'components/Background/Background';
 import PortfolioPage from 'components/PortfolioPage/PortfolioPage';
 import { motion } from 'framer-motion';
 import ParticlesBackground from 'components/ParticlesBackground/ParticlesBackground'
+import Footer from 'components/Footer/Footer';
 
 
 
@@ -37,7 +38,7 @@ const portfolio = ({allImages,navigationItems,portfolio,skills,pageTitle}) =>{
          <motion.div initial={{opacity:0, width:'100vw',height:'100vh'}} animate={{opacity:1,transition:{
         duration:0.5
       }}}
-      exit={{opacity:0}}
+      exit={{opacity:0,transition:{duration:1}}}
       className={'particlesBG'}>
         <ParticlesBackground/>
       </motion.div>
@@ -48,7 +49,7 @@ const portfolio = ({allImages,navigationItems,portfolio,skills,pageTitle}) =>{
               <PageHeader title={pageTitle} delay={0.7} backgroundImage={images?images[2].obrazki[0].url:null}/>
               <PortfolioPage />
               <Contact/>
-              
+              <Footer/>
           </LayoutMain>
         </Layout>
         <MobileNavigation/>

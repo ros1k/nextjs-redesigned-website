@@ -41,7 +41,8 @@ const SinglePortfolio = ({company,pageImage,imagePlaceholder,website,isPageOnlin
             y:20,
             position:'absolute',
             top:0,
-            left:0,
+            left:0, 
+            transition:{duration:1}
          }}   
          ref={containerRef}
         

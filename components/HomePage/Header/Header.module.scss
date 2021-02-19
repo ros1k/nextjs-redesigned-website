@@ -62,6 +62,9 @@
    align-items: center;
    margin-top: 200px;
    width: 100%;
+   @media screen and (max-width:600px) {
+     margin-top: 80px;
+   }
 }
 
 $colorBg: #222a30;

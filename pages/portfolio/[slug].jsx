@@ -62,16 +62,16 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images,socialMedia }) 
    return (
           <motion.div 
                transition={{
-                  duration:0.3,
+                  duration:0.5,
                   delay:0,
                }}
-               exit={{opacity:0}}>
+               exit={{opacity:0,transition:{duration:1}}}>
             {currentPageData && 
                <div  >
                     <motion.div initial={{opacity:0, width:'100vw',height:'100vh'}} animate={{opacity:1,transition:{
                         duration:0.5
                         }}}
-                        exit={{opacity:0}}
+                        exit={{opacity:0,transition:{duration:1}}}
                         className={'particlesBG'}>
                         <ParticlesBackground/>
                         </motion.div>

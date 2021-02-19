@@ -42,7 +42,7 @@ const Home = ({ navigationItems, portfolio, skills , images, info, socialMedia})
       transition={{
       duration:0.5,
       delay:0.2}} 
-      exit={{opacity:0}} 
+      exit={{opacity:0,transition:{duration:1}}}
       > 
       <motion.div initial={{opacity:0, width:'100vw',height:'100vh'}} animate={{opacity:1,transition:{
         duration:0.5
@@ -85,9 +85,10 @@ const Home = ({ navigationItems, portfolio, skills , images, info, socialMedia})
                   </div>
                 </div>
               </div>
+              <Footer/>
               <MobileNavigation/>
             </motion.main>
-            <Footer/>
+            
       </LayoutFluid>
     </motion.div>
    

@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   }, [router.pathname])
   return (
     <StoreProvider>
-      <AnimatePresence  exitBeforeEnter>
+      <AnimatePresence initial={false}  exitBeforeEnter>
         
           <Component {...pageProps} pageTitle={pageTitle}/>
       

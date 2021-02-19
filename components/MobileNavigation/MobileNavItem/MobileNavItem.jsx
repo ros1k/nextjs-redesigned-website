@@ -32,7 +32,7 @@ const NavItem = ({name,urlSlug,custom,setDelay,icon}) => {
            },
           }}>
          <Link  className={style['nav-item','link']} href={urlSlug?`/${urlSlug}`:`/`} >
-            <a onClick={(e)=>handleClick(e)}><img src={icon.url}/> </a>
+            <a ><img src={icon.url}/> {name} </a>
             </Link>
       </motion.li>
    )

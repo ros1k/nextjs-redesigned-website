@@ -3,10 +3,7 @@
    height: 650px;
    position: relative;
    z-index: 1;
-   @media screen and (max-width:600px){
-      max-width: 300px;
-      margin: 0 auto;
-   }
+   
    @media screen and (max-width:1180px){
       min-width: 33%;
       height: 600px;
@@ -14,6 +11,11 @@
    @media screen and (max-width:991px){
       min-width: 50%;
       height: 500px;
+   }
+   @media screen and (max-width:600px){
+      min-width: auto;
+      max-width: 230px;
+      margin: 0 auto;
    }
    &-image-wrapper{
       height: 100%;
