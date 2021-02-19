@@ -32,8 +32,8 @@ const portfolio = ({allImages,navigationItems,pageTitle}) =>{
   }, [navigationItems,images])
 
   
-  return (
-      <div exit={{opacity:0}} initial={{opacity:0}} transition={{duration:1}} animate={{opacity:1}}>
+  return ( 
+      <div exit={{opacity:0,transition:{duration:1}}} initial={{opacity:0}} transition={{duration:1}} animate={{opacity:1}}>
          <motion.div initial={{opacity:0, width:'100vw',height:'100vh'}} animate={{opacity:1,transition:{
         duration:0.5
       }}}
