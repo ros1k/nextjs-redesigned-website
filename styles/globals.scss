@@ -84,7 +84,7 @@ main{
   width: 50px!important;
   height: 30px!important;
   @media screen and (max-width:600px){
-    left: 0px!important;
+    left: -10px!important;
   }
 }
 .slick-next{
@@ -93,7 +93,7 @@ main{
   width: 50px!important;
   height: 30px!important;
   @media screen and (max-width:600px){
-    right: 0px!important;
+    right: -10px!important;
   }
 }
 
