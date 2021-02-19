@@ -40,7 +40,7 @@ const Navigation = ({delay}) => {
     
     
    }
-   console.log(images);
+
    return (
       <motion.nav 
          initial={{

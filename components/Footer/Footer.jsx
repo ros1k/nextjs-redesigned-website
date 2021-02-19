@@ -7,7 +7,7 @@ import style from './Footer.module.scss'
 
 const Footer = () => {
    const {socialMedia} = useContext(StoreContext)
-   console.log(socialMedia);
+
    return (
       <footer>
          <ul className={style['footer-list']}>
