@@ -26,6 +26,7 @@ const SinglePortfolioPage = ({ navigationItems, portfolio,images,socialMedia }) 
    const [sectionTitles,setSectionTitles] = useState()
    const [sectionDesc,setSectionDesc] = useState()
  
+   
    const router = useRouter()
    const slug = router.query.slug || []
    const currentTrans = { duration: 2, ease: [0.6, 0.01, -0.05, 0.9]}
